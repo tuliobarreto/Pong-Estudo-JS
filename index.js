@@ -24,7 +24,7 @@ var bola = {
   speed: 50
 };
 
-var direita = {
+var esquerda = {
   x: 10,
   y: canvas.height / 2 - 60,
   altura: 120,
@@ -33,7 +33,7 @@ var direita = {
   speed: 15
 };
 
-var esquerda ={
+var direita  ={
   x: 560,
   y: canvas.height / 2 - 60,
   altura: 120,
@@ -61,8 +61,8 @@ function moverbloco(){
   if (38 in teclas && direita.y >0)
     direita.y -= direita.speed;
 
-  if(40 in teclas && direita.y + direita,alert < canvas.height)
-    direita.y -= direita.speed;
+  if(40 in teclas && direita.y + direita.altura < canvas.height)
+    direita.y += direita.speed;
 };
 
 function desenha(){
@@ -80,4 +80,4 @@ function desenha(){
   ctx.fillText("Player 2:" + direita.score, canvas.width -150, 30);
 }
 
-desenha();
+setInterval(desenha, 20);
