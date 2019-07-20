@@ -11,7 +11,7 @@ appDiv.innerHTML = `<h1>JS Starter</h1>`;
 var canvas = document.getElementById("mycanvas");
 var ctx = canvas.getContext("2d");
 
-var tecla = {};
+var teclas = {};
 
 var bola = {
   x: canvas.width / 2 - 15,
@@ -42,7 +42,34 @@ var esquerda ={
   speed: 15
 };
 
+document.addEventListener("keydown", function(e){
+  teclas[e.keyCode] = true;
+  //alert(e.keyCode);
+}, false);
+
+document.addEventListener("keyup", function(e){
+  delete teclas[e.keyCode];
+}, false );
+
+function moverbloco(){
+  if(87 in teclas && esquerda.y > 0)
+    esquerda.y -= esquerda.speed;
+
+  if(83 in teclas && esquerda.y + esquerda.altura < canvas.height)
+    esquerda.y += esquerda.speed;
+  
+  if (38 in teclas && direita.y >0)
+    direita.y -= direita.speed;
+
+  if(40 in teclas && direita.y + direita,alert < canvas.height)
+    direita.y -= direita.speed;
+};
+
 function desenha(){
+
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  moverbloco();
+
   ctx.fillStyle = "white";
   ctx.fillRect(bola.x, bola.y, bola.largura, bola.altura);
   ctx.fillRect(direita.x, direita.y, direita.largura, direita.altura);
