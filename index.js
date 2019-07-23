@@ -75,6 +75,31 @@ function moverbola(){
     bola.dirx =-1;
     bola.mod += 0.2;
   }
+  if(bola.y <=0)
+    bola.diry = 1;
+  else if (bola.y +bola.altura >= canvas.height)
+    bola.direita = -1;
+
+  bola.x += (bola.speed + bola.mod) * bola.dirx;
+  bola.y += (bola.speed + bola.mod) * bola.diry;
+
+  if(bola.x < esquerda.x + esquerda.largura)
+    newgame("player 2");
+
+  else if( bola.x + bola.largura > direita.x)
+    newgame("player 1");
+};
+
+function newgame(winner){
+  if(winner == "player 1")
+    ++esquerda.score;
+  else 
+    ++direita.score;
+
+  esquerda.y = canvas.height / 2 - esquerda.altura /2;
+  direita.y = esquerda.y;
+  bola.y = canvas.width / 2 -bola.altura / 2;
+  bola.x = canvas.height / 2 - bola.largura / 2;
 };
 
 function desenha(){
