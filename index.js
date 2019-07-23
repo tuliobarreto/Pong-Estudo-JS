@@ -55,14 +55,26 @@ function moverbloco(){
   if(87 in teclas && esquerda.y > 0)
     esquerda.y -= esquerda.speed;
 
-  if(83 in teclas && esquerda.y + esquerda.altura < canvas.height)
+  else if(83 in teclas && esquerda.y + esquerda.altura < canvas.height)
     esquerda.y += esquerda.speed;
   
   if (38 in teclas && direita.y >0)
     direita.y -= direita.speed;
 
-  if(40 in teclas && direita.y + direita.altura < canvas.height)
+  else if(40 in teclas && direita.y + direita.altura < canvas.height)
     direita.y += direita.speed;
+};
+
+
+function moverbola(){
+  if(bola.y + bola.altura >= esquerda.y && bola.y <= esquerda.y + esquerda.altura && bola.x <= esquerda.x + esquerda.largura){
+    bola.dirx =1;
+    bola.mod += 0.2;
+  }
+  else if(bola.y + bola.altura >= direita.y && bola.y <= direita.y + direita.altura && bola.x + bola.altura >= direita.x){
+    bola.dirx =-1;
+    bola.mod += 0.2;
+  }
 };
 
 function desenha(){
